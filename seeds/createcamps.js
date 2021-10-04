@@ -29,7 +29,7 @@ const seed = async() => {
             name: `${arrRand(descriptors)} ${arrRand(places)}`,
             description: lorem,
             price: Math.floor(Math.random()*40)+9,
-            user: '6149db1f87c1f52124611cc8',
+            user: '615af1a5020d141ebf4fad93',
             image: [{url : "https://res.cloudinary.com/dmyr4hycj/image/upload/v1632488618/CampReview/spny8ay5e9vjooplhyeo.jpg", 
             filename : "CampReview/spny8ay5e9vjooplhyeo" }, 
             { url : "https://res.cloudinary.com/dmyr4hycj/image/upload/v1632488618/CampReview/yvmqax4kktinyiybdhvh.webp", filename : "CampReview/yvmqax4kktinyiybdhvh" } ],

@@ -63,7 +63,7 @@ module.exports.postRegister = async(req, res)=> {
         res.redirect('/'); 
     }
     catch (e) {
-        req.flash('success', e.message);
+        req.flash('error', e.message);
         res.redirect('/register');
     }
     
