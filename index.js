@@ -30,8 +30,8 @@ const userRouter = require('./routes/userRouter');
 const { cloudinary } = require('./cloudinary/cloudinary');
 const MongoStore = require('connect-mongo');
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost:27017/campApp';
-const secret = process.env.SECRET || 'badsecret';
+const dbUrl = /* process.env.DB_URL ||  */'mongodb://localhost:27017/campApp';
+const secret = /* process.env.SECRET ||  */'badsecret';
 
 const store = new MongoStore({mongoUrl: dbUrl, secret: secret, touchAfter: 24 * 60 *60})
 
@@ -49,7 +49,7 @@ const sessionConfig = {
     saveUninitialized: false,
     cookie: {
         httpOnly: true,
-        secure: true,
+        /* secure: true, */
         expires: Date.now() + 1000*60*60*24*7,
         maxAge:  1000*60*60*24*7
         
@@ -158,7 +158,7 @@ app.use((e, req, res, next)=> {
 })
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 app.listen(port, (req, res)=>{
 
     console.log(`Serving on ${port}`);
