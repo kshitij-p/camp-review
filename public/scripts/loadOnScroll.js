@@ -1,7 +1,7 @@
 //requests new camps
 async function requestCamps(lastCampId, lastCamp) {
     
-    let data = await fetch('http://localhost:8080/camps/api/loadcamps', {headers: {'lastCamp': lastCampId}})
+    let data = await fetch('/camps/api/loadcamps', {headers: {'lastCamp': lastCampId}})
     let parsedData = await data.json();
     
     
