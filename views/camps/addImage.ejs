@@ -1,0 +1,15 @@
+<% layout('layouts/boilerplate.ejs') %>
+    <div class="row">
+        <div class="col-6 offset-3">
+            <form action="/camps/<%=camp._id%>?_method=PATCH" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="addImage" class="form-label">Image </label>
+                <input type="file" name="addImage" class="form-control" id="addImage" required multiple>
+                <button>Submit</button>
+            </div>
+        </form>
+        </div>
+    </div>
+    
+</div>
+

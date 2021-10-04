@@ -1,0 +1,48 @@
+<% layout('layouts/boilerplate.ejs') %>
+<link rel="stylesheet" href="/stylesheets/infoicon.css">
+<div class="row">
+    <h1 class="text-center">Create a camp</h1>
+        <div class="col-6 offset-3">
+            <form action="/camps" method="POST" novalidate class="validateform" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label for="name" class="form-label">Name </label>
+                <input type="text" name="name" class="form-control" id="name" required>
+            </div>
+            <div class="mb-3">
+                <label for="location" class="form-label">Location </label>
+                <input type="text" name="location" class="form-control" id="location" required>
+            </div>
+            <div class="mb-3">
+            <label for="price" class="form-label">Price </label>
+            <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input type="number" name="price" class="form-control" aria-label="Amount (to the nearest dollar)" required>
+                <span class="input-group-text">.00</span>
+            </div>
+            </div>
+            
+            <div class="mb-3">
+                <label for="image" class="form-label">Image </label>
+                <span class="info-icon info-span">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="info-icon svg">
+                        <image href="/images/info-icon.svg" alt="" class="info-icon info-img"> 
+                    </svg>
+                </span>
+                <input type="file" name="image" class="form-control" id="image" multiple>
+            </div>
+            <div class="mb-3">
+                <div class="form-floating">
+                    
+                    <textarea name="description" class="form-control" placeholder="" id="floatingTextarea2" style="height: 100px"></textarea>
+                    <label for="description">Description</label>
+                  </div>
+            </div>
+            <div class="mb-3">
+                <button class="btn btn-dark">Create Camp</button>
+            </div>
+            <a href="/camps">Show all camps</a>
+            </form>
+        </div>
+    
+</div>
+

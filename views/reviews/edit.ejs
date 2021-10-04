@@ -1,0 +1,53 @@
+<% layout('layouts/boilerplate.ejs') %>
+
+
+<form action="/camps/<%=camp._id%>/reviews/<%=review._id%>?_method=PUT" method="POST" novalidate class="validateform">
+    <div class="row">
+        <h1 class="text-center">Editing <%=camp.name%></h1>
+            <div class="col-6 offset-3">
+                
+                <div class="mb-3">
+                    <label for="description" class="mb-2">Description</label>
+                    <div class="form-floating">
+                        
+                    <textarea name="review[message]" 
+                    class="form-control" placeholder="" id="message" style="height: 100px" required><%=review.message%></textarea>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="rating" class="form-label">Rating </label>
+                    <input type="number" name="review[rating]" 
+                    value="<%=review.rating%>"class="form-control" id="rating" required>
+                </div>
+               
+                <div class="mb-3">
+                    <button class="btn btn-dark">Edit Reviews</button>
+                </div>
+                <a href="/camps/<%=camp._id%>">Back to <%=camp.name%></a>
+                
+            </div>
+        
+    </div>
+</form>
+
+<script>
+    (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.validateform')
+
+  // Loop over them and prevent submission
+  Array.from(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>   

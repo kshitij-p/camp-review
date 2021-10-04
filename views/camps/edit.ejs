@@ -1,0 +1,94 @@
+<% layout('layouts/boilerplate.ejs') %>
+<link rel="stylesheet" href="/stylesheets/editpage.css">
+
+<form action="/camps/<%=camp._id%>?_method=PUT" method="POST" novalidate class="validateform" enctype="multipart/form-data">
+    <div class="row">
+        <h1 class="text-center">Editing <%=camp.name%></h1>
+            <div class="col-6">
+                
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name </label>
+                    <input type="text" name="name" 
+                    value="<%=camp.name%>"class="form-control" id="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="location" class="form-label">Location </label>
+                    <input type="text" name="location" 
+                    value="<%=camp.location%>"class="form-control" id="location" required>
+                </div>
+                <div class="mb-3">
+                <label for="price" class="form-label">Price </label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input type="number" name="price" 
+                    value="<%=camp.price%>"class="form-control" aria-label="Amount (to the nearest dollar)" required>
+                    <span class="input-group-text">.00</span>
+                </div>
+                </div>
+                <div class="mb-3">
+                    <label for="addImage" class="form-label">Add new images </label>
+                    <span class="info-icon info-span">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="info-icon svg">
+                            <image href="/images/info-icon.svg" alt="" class="info-icon info-img"> 
+                        </svg>
+                    </span>
+                    <input type="file" name="addImage" class="form-control" id="addImage" multiple>
+                    
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="mb-2">Description</label>
+                    <div class="form-floating">
+                        
+                        <textarea name="description"  id="description"
+                        class="form-control" placeholder="" id="floatingTextarea2" required><%=camp.description%></textarea>
+                        
+                      </div>
+                </div>
+
+                <div class="mb-3">
+                    <button class="btn btn-dark" type="submit">Edit Camp</button>
+                    
+                </div>
+                <a href="/camps/<%=camp._id%>"><button class="btn btn-dark mb-3 d-inline" type="button">Back to <%=camp.name%></button></a>
+
+                               
+                
+                
+            </div>
+            <div class="col-6">
+                <% camp.image.forEach((image, i)=> { %>
+                    <img src="<%=image.thumbnail%>" alt="" class="img-thumbnail d-inline-block">
+                    <div class="form-check form-check-inline d-block">
+                            <input type="checkbox" id="image-<%=i%>" name="deleteImages[]" value="<%=image.filename%>" class="form-check-input mr-0">
+                            <label for="image-<%=i%>"" class="mb-2">Delete ?</label>
+                    </div>
+                    
+                <% }) %> 
+
+                
+            </div>
+        
+    </div>
+</form>
+
+<script>
+    (function () {
+  'use strict'
+
+  // Fetch all the forms we want to apply custom Bootstrap validation styles to
+  const forms = document.querySelectorAll('.validateform')
+
+  // Loop over them and prevent submission
+  Array.from(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>   

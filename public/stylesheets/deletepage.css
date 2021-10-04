@@ -1,0 +1,19 @@
+
+.delete-btn {
+    border: 1px solid rgb(63, 63, 63); 
+    
+}
+
+.delete-btn:hover {
+    border: 1px solid rgb(63, 63, 63); 
+}
+
+.delete-btn a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+}
+
+.price {
+    font-size: 2em; font-weight: bold
+}

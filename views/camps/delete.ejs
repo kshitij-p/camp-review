@@ -1,0 +1,35 @@
+
+
+<% layout('layouts/boilerplate.ejs') %>
+<link rel="stylesheet" href="/stylesheets/deletepage.css">
+<div class="container">
+<div class="row text-center">
+    <div class="container mb-2">
+<h1>Delete camp: <%=camp.name%></h1>
+    </div>
+
+    <div class="container-sm mb-2 w-25">
+        <% if(camp.image.length) { %>
+            <img src="<%=camp.image[0].url%>" alt="" class="img-thumbnail">
+        <% } else { %>
+            <img src="<%=camp.placeholderimg%>" alt="" class="img-thumbnail">
+        <% } %> 
+        
+    </div>
+    <div class="container">
+       <p class="price"> Price: $<%=camp.price%></p>
+    </div>
+    <div class="container border border-2 mb-5">
+       <p> <%=camp.description%></p>
+    </div>
+    <h1></h1>
+    <div class="cols">
+        <form action="/camps/<%=camp._id%>?_method=DELETE" method="POST">
+            <button type="button" class="btn btn-light me-2 delete-btn"><a href="/camps/<%=camp._id%>">BACK</a></button>
+            <button type="submit" class="btn btn-dark ms-2 fw-bold">Confirm</button>
+        </form>
+       
+    </div>
+</div>
+</div>
+

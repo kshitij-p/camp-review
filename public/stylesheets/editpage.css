@@ -1,0 +1,43 @@
+#description {
+    height: 175px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+    color: white;
+}
+
+.info-icon {
+    width: 16px;
+    height: 16px;
+    
+}
+
+.info-img {
+    filter: opacity(50%);
+}
+
+.info-img:hover {
+    filter: opacity(100%);
+}
+
+
+.info-span::after {
+    content: "";
+    color: black;
+   
+}
+
+.info-span:hover::after{
+    content: "Please use images that are 625x425 or 25:17 aspect ratio for best results";
+    color: black;
+    padding: 3px 5px;
+    background-color: hsl(184, 50%, 90%);
+    border-radius: 3px;
+    font-size: 0.9em;
+}

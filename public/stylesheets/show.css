@@ -1,0 +1,16 @@
+#map {
+    width: clamp(0%, 100%, 100%);
+    height: 423px;
+    
+    
+    margin-top: 10.2%;
+}
+
+textarea{
+    height: 100px; width: 100%
+}
+
+.review-username {
+    
+    border-bottom: 2px solid hsl(0, 0%, 73%);
+}

@@ -1,0 +1,53 @@
+
+<% layout('layouts/boilerplate.ejs') %>
+<link rel="stylesheet" href="/stylesheets/indexpage.css">
+<div id="clustermap" class="mb-3"></div>
+
+<h1 class="mb-3">List of all camps: </h1>
+<ul>
+<% for(let c of camps) { %>
+    <div class="card mb-3" data="<%=c.id%>">
+        <div class="row">
+            <div class="col-md-4">
+                <% if (c.image.length) { %>
+                <img src="<%=c.image[0].url%>" alt="" class="img-fluid">
+                <% } else {%>
+                    <img src="<%=c.placeholderimg%>" alt="" class="img-fluid">
+                    
+                <% } %> 
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <%=c.name%>
+                    </h5>
+                    <p class="card-text"><%=c.description%></p>
+                    <p class="card-text">
+                        <small class="text-muted">
+                        <%=c.location%> 
+                        </small>
+                    </p>
+                    <a href="camps/<%=c._id%>" class="btn btn-primary">View</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<% } %>  
+
+</ul>
+
+<script>
+    const mapBoxToken = '<%- process.env.MAPBOX_TOKEN %>'
+    
+    
+
+    const campData =  {features: <%- JSON.stringify(camps) %> }
+    
+
+</script>
+
+<script src="/scripts/clusterMap.js"></script>
+
+<!-- Infinite scrolling -->
+<script src="/scripts/loadOnScroll.js"></script> 
+
