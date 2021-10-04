@@ -1,4 +1,8 @@
 //requests new camps
+//fetch promise is marked as ok even when connection is returned using return or res.end and returns with status 200 saying connection refused
+//thus our promise at loadcamp "rejects" and function returns so create new observer never runs
+//thus we avoid infinite loop (can confirm by console logging at end of load camps and seeing)
+//you can check in console the last request (connection refused) if you close nodemon then wait 2-3 secs
 async function requestCamps(lastCampId, lastCamp) {
     
     let data = await fetch('/camps/api/loadcamps', {headers: {'lastCamp': lastCampId}})
@@ -80,6 +84,8 @@ async function createCamps(campId, titleText, imgSrc, descText, locationText, sh
 
 async function loadCamps(lastCamp) {
     
+    //create div with id loader, add to ul in loadcamps then remove it in intersection observer
+
     let lastCampId = lastCamp.getAttribute("data");
     
     await requestCamps(lastCampId, lastCamp);
