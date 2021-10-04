@@ -39,7 +39,7 @@ store.on("error", (e)=> {
     console.log(e);
 });
 
-
+app.set('trust proxy', 1);
 
 const sessionConfig = {
     store: store,
