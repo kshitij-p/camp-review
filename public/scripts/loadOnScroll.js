@@ -85,7 +85,7 @@ async function createCamps(campId, titleText, imgSrc, descText, locationText, sh
 
 async function loadCamps(lastCamp) {
     
-    //create div with id loader, add to ul in loadcamps then remove it in intersection observer
+    
 
     let loader = document.createElement('div')
     loader.id = 'loader'

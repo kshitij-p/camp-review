@@ -5,7 +5,7 @@ module.exports.post = async(req, res)=> {
     const {id} = req.params;
     const {review: info} = req.body;
     
-    console.log(info);
+    
 
     const camp = await Camp.findById(id);
     const review = await new Review(info);

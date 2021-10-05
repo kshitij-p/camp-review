@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const [Camp] = require('../models/camp');
+const [Camp, Review] = require('../models/camp');
 
 const cities = require('./citylist');
 const {descriptors, places} = require('./campdatagen');
@@ -20,7 +20,7 @@ const randImage = "https://source.unsplash.com/collection/2184453";
 const seed = async() => {
 
     await Camp.deleteMany({});
-    
+    await Review.deleteMany({});
     for(let i =0; i<10; i++){
         let randCity = arrRand(cities)
         
