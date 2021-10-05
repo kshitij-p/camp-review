@@ -6,6 +6,7 @@
 async function requestCamps(lastCampId, lastCamp) {
     
     let data = await fetch('/camps/api/loadcamps', {headers: {'lastCamp': lastCampId}})
+    
     let parsedData = await data.json();
     
     
@@ -86,14 +87,27 @@ async function loadCamps(lastCamp) {
     
     //create div with id loader, add to ul in loadcamps then remove it in intersection observer
 
+    let loader = document.createElement('div')
+    loader.id = 'loader'
+
     let lastCampId = lastCamp.getAttribute("data");
     
-    await requestCamps(lastCampId, lastCamp);
+    lastCamp.parentElement.append(loader);
+
+    try {
+        await requestCamps(lastCampId, lastCamp);
+        loader.remove()
+    } catch (e) {
+        loader.remove()
+        return;
+    }
+    
+    
     createObserver();
 }
 
 //create observer to check if we are at last camp
-function createObserver() {
+async function createObserver() {
     let list = document.querySelectorAll('div.card.mb-3');
     let lastCamp = list[list.length-1]
 
@@ -112,6 +126,8 @@ function createObserver() {
        })
 
     }, {threshold: 1});
+    
+    
     observer.observe(lastCamp);
 }
 

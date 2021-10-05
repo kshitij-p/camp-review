@@ -148,7 +148,7 @@ module.exports.loadcamps = async(req, res, next)=> {
         
         if(isLast) {
             
-            return;
+            return res.end();
         }
         const nextCamps = await Camp.find({id: {$gt: camp.id}}).limit(2);
         res.json(nextCamps);
